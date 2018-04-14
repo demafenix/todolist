@@ -2,6 +2,7 @@ package update;
 
 import java.sql.Date;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -13,7 +14,7 @@ public class dataUpdate{
 	@NotEmpty(groups= {GroupOrder1.class},message="内容を入力してください")
 	@Size(min=1,max=40,groups= {GroupOrder2.class},message="40文字以内で記述してください")
 	public String data;
-	
+	@Future(groups= {GroupOrder1.class},message="過去の値は入力できません")
 	public Date date;
 	
 	
