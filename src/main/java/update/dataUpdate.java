@@ -29,6 +29,7 @@ public class dataUpdate{
 	
 	public String getData() {
 		return data;
+		
 	}
 	
 	public void setData(String data) {
