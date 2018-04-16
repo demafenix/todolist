@@ -21,6 +21,10 @@
 		<f:errors path="data" element="div" cssStyle="color:red"/>
 		</div>
 		<div>
+		優先度を入力してください(1~3)<input type="number" id="priority" name="priority">
+		<f:errors path="priority" element="div" cssStyle="color:red"/>
+		</div>
+		<div>
 		<input type="submit" value="登録">
 		</div>
 		</f:form>

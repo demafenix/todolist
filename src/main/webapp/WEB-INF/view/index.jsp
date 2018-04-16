@@ -13,16 +13,29 @@
 	<body>
 		今後の予定<br>
 		<c:forEach var="obj" items="${list}" varStatus="status">
-		<c:out value="${obj.getDate()}"/><br>
-		<c:out value="${obj.getTodo()}"></c:out><br>
+		
+		<f:form modelAttribute="dataDelete" action="indexdel" method="post">
+		<tr>
+			<td><c:out value="${obj.getDate()}"/></td>
+			<td><c:out value="${obj.getTodo()}"></c:out></td>
+			<td><c:out value="${obj.getPriority()}"></c:out></td>
+			<input type="hidden" name="id" value="${obj.getId()}">
+			<td><input type="submit" value="削除"></td>
+		</tr>	
+		</f:form>	
+		
 		</c:forEach>
 		
 		<form action="update" method="post">
 		<input type="submit" value="登録">
 		</form><br>
 		
-		<form action="delete" method="post">
-		<input type="submit" value="削除">
+		<form action="indexpr" method="post">
+		<input type="submit" value="優先度順">
+		</form>
+		
+		<form action="indexda" method="post">
+		<input type="submit" value="日付順">
 		</form>
 	</body>
 </html>

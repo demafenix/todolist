@@ -1,18 +1,16 @@
 package update;
 
-import java.sql.Date;
-
 public class dataDelete{
 	
-	public Date date;
+	public int id;
 	
-	public Date getDate() {
-		return date;
+	public int getId() {
+		return id;
 		
 	}
 	
-	public void setDate(Date date) {
-		this.date=date;
+	public void setId(int id) {
+		this.id=id;
 	}
 	
 }

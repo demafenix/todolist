@@ -31,15 +31,22 @@ public class LoginController{
 	}
 	
 	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public String uodate(Model model) {
+	public String update(Model model) {
 		return "update";
 	}
 	
-	@RequestMapping(value="/delete",method=RequestMethod.POST)
-	public String delete(Model model) {
+	@RequestMapping(value="/indexpr",method=RequestMethod.POST)
+	public String sortpriority(Model model) {
+		List<Todolist> todolist=userRep.findAllByOrderByPriorityDescDateAsc();
+		model.addAttribute("list", todolist);
+		return "index";
+	}
+	
+	@RequestMapping(value="/indexda",method=RequestMethod.POST)
+	public String sortdate(Model model) {
 		List<Todolist> todolist=userRep.findAllByOrderByDateAsc();
 		model.addAttribute("list", todolist);
-		return "delete";
+		return "index";
 	}
 	
 	@RequestMapping(value="/indexup",method=RequestMethod.POST)
@@ -48,7 +55,7 @@ public class LoginController{
 		if(result.hasErrors()) {
 			return "update";
 		}
-		this.userRep.save(new Todolist(dataUpdate.getDate(),dataUpdate.getData()));
+		this.userRep.save(new Todolist(0,dataUpdate.getDate(),dataUpdate.getPriority(),dataUpdate.getData()));
 		List<Todolist> todolist=userRep.findAllByOrderByDateAsc();
 		model.addAttribute("list", todolist);
 		return "index";
@@ -60,9 +67,9 @@ public class LoginController{
 		if(result.hasErrors()) {
 			List<Todolist> todolist=userRep.findAllByOrderByDateAsc();
 			model.addAttribute("list", todolist);
-			return "delete";
+			return "index";
 		}
-		this.userRep.delete(this.userRep.findByDate(dataDelete.getDate()));
+		this.userRep.delete(this.userRep.findById(dataDelete.getId()));
 		List<Todolist> todolist=userRep.findAllByOrderByDateAsc();
 		model.addAttribute("list", todolist);
 		return "index";

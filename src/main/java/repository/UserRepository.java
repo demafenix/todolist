@@ -11,5 +11,7 @@ import model.Todolist;
 @Repository
 public interface UserRepository extends JpaRepository<Todolist,String>{
 	public List<Todolist> findAllByOrderByDateAsc();
+	public List<Todolist> findAllByOrderByPriorityDescDateAsc();
 	public List<Todolist> findByDate(Date date);
+	public List<Todolist> findById(int id);
 }
